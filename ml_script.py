@@ -99,6 +99,8 @@ class MLWarmup:
     def homework(self):
         self.titanic = seaborn.load_dataset("titanic")
         print(self.titanic)
+        # y -> survived
+        # X -> reszta kolumn
         # 1. Oczyszczenie danych i podział na zbiór testowy i treningowy ???
         # 2. Trenowanie na podstawie kNN(???)
         # 3. Testowanie
