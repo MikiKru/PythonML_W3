@@ -4,17 +4,12 @@ from pandas import DataFrame
 from seaborn import load_dataset
 from sklearn.datasets import load_iris
 from sklearn.impute import SimpleImputer
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 
 class MLWarmup:
-    def getIrisDataset(self):
-        iris = load_iris()
-        index = 0
-        while(index < len(iris['target'])):
-            print(iris['data'][index], iris['target'][index], iris['target_names'][iris['target'][index]],
-                  sep=' | ')
-            index += 1
+
     def getPlanetsDataset(self):
         planets_df = load_dataset("planets")
         print(planets_df)
@@ -57,6 +52,26 @@ class MLWarmup:
         planets_df4 = std.fit_transform(planets_df4)
         planets_df4 = DataFrame(planets_df4, columns=list(planets_df.columns))
         print(planets_df4)
+        corr = planets_df4.corr()
+        pd.set_option('display.max.columns', None)
+        print(corr)
+
+    def getIrisDataset(self):
+        self.iris = load_iris()
+        index = 0
+        while(index < len(self.iris['target'])):
+            print(self.iris['data'][index], self.iris['target'][index], self.iris['target_names'][self.iris['target'][index]],
+                  sep=' | ')
+            index += 1
+    def splitDataset(self):
+        X_train, X_test, y_train, y_test = train_test_split(self.iris['data'], self.iris['target'], train_size=0.6)
+        index = 0
+        print("TRENINGOWY", len(X_train))
+        while (index < len(y_train)):
+            print(X_train[index], y_train[index],sep=' | ')
+            index += 1
+
 ml = MLWarmup()
-# ml.getIrisDataset()
-ml.getPlanetsDataset()
+ml.getIrisDataset()
+ml.splitDataset()
+# ml.getPlanetsDataset()
