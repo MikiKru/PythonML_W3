@@ -1,5 +1,6 @@
 import pandas as pd
-from pandas import np, DataFrame
+from numpy import nan
+from pandas import DataFrame
 from seaborn import load_dataset
 from sklearn.datasets import load_iris
 from sklearn.impute import SimpleImputer
@@ -31,7 +32,7 @@ class MLWarmup:
         planets_df2 = planets_df2.dropna(thresh=4)
         print(planets_df2)
         # uzupełnianie pustych danych
-        impFreq = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+        impFreq = SimpleImputer(missing_values=nan, strategy='most_frequent')
         planets_df3 = impFreq.fit_transform(planets_df)
         planets_df3 = DataFrame(planets_df3, columns=list(planets_df.columns))
         print(planets_df3.isnull().sum())
@@ -45,7 +46,7 @@ class MLWarmup:
         planets_df4['method'] = planets_df['method'].map(method_mapper)
         # print(planets_df4)
         # uzupełnienie wartości pustych
-        impMean = SimpleImputer(missing_values=np.nan, strategy='mean')
+        impMean = SimpleImputer(missing_values=nan, strategy='mean')
         planets_df4 = impMean.fit_transform(planets_df)
         planets_df4 = DataFrame(planets_df4, columns=list(planets_df.columns))
         print(planets_df4.isnull().sum())
