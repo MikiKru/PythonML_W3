@@ -4,7 +4,9 @@ from pandas import DataFrame
 from seaborn import load_dataset
 from sklearn.datasets import load_iris
 from sklearn.impute import SimpleImputer
+from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
 
 
@@ -64,14 +66,38 @@ class MLWarmup:
                   sep=' | ')
             index += 1
     def splitDataset(self):
-        X_train, X_test, y_train, y_test = train_test_split(self.iris['data'], self.iris['target'], train_size=0.6)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.iris['data'], self.iris['target'], train_size=0.2)
         index = 0
-        print("TRENINGOWY", len(X_train))
-        while (index < len(y_train)):
-            print(X_train[index], y_train[index],sep=' | ')
+        print("TRENINGOWY", len(self.X_train))
+        while (index < len(self.y_train)):
+            print(self.X_train[index], self.y_train[index],sep=' | ')
             index += 1
+    def trainModel(self):
+        self.knn3 = KNeighborsClassifier(n_neighbors=3)
+        self.knn5 = KNeighborsClassifier(n_neighbors=5)
+        self.knn7 = KNeighborsClassifier(n_neighbors=7)
+        # trenowanie
+        self.knn3.fit(self.X_train,self.y_train)
+        self.knn5.fit(self.X_train,self.y_train)
+        self.knn7.fit(self.X_train,self.y_train)
+        # pomiar dokładności trenowania !!!
+        y_pred3 = self.knn3.predict(self.X_train)
+        y_pred5 = self.knn5.predict(self.X_train)
+        y_pred7 = self.knn7.predict(self.X_train)
+        print("ACC(kNN3) train: " + str(accuracy_score(self.y_train, y_pred3)))
+        print("ACC(kNN5) train: " + str(accuracy_score(self.y_train, y_pred5)))
+        print("ACC(kNN7) train: " + str(accuracy_score(self.y_train, y_pred7)))
+    def testModel(self):
+        y_pred3 = self.knn3.predict(self.X_test)
+        y_pred5 = self.knn5.predict(self.X_test)
+        y_pred7 = self.knn7.predict(self.X_test)
+        print("ACC(kNN3) test: " + str(accuracy_score(self.y_test, y_pred3)))
+        print("ACC(kNN5) test: " + str(accuracy_score(self.y_test, y_pred5)))
+        print("ACC(kNN7) test: " + str(accuracy_score(self.y_test, y_pred7)))
 
 ml = MLWarmup()
 ml.getIrisDataset()
 ml.splitDataset()
+ml.trainModel()
+ml.testModel()
 # ml.getPlanetsDataset()
