@@ -1,5 +1,9 @@
+import pandas as pd
+from pandas import np, DataFrame
 from seaborn import load_dataset
 from sklearn.datasets import load_iris
+from sklearn.impute import SimpleImputer
+
 
 class MLWarmup:
     def getIrisDataset(self):
@@ -11,7 +15,7 @@ class MLWarmup:
             index += 1
     def getPlanetsDataset(self):
         planets_df = load_dataset("planets")
-        # print(planets_df)
+        print(planets_df)
         column_names = ['method', 'number', 'orbital_period', 'mass', 'distance', 'year']
         # ilość wartości pustych w kolumnach
         print(planets_df.isnull().sum())
@@ -26,8 +30,12 @@ class MLWarmup:
         planets_df2 = planets_df
         planets_df2 = planets_df2.dropna(thresh=4)
         print(planets_df2)
-
-
+        # uzupełnianie pustych danych
+        imp = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+        planets_df3 = imp.fit_transform(planets_df)
+        planets_df3 = DataFrame(planets_df3, columns=list(planets_df.columns))
+        print(planets_df3.isnull().sum())
+        print(planets_df3)
 
 ml = MLWarmup()
 # ml.getIrisDataset()
