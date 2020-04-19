@@ -4,6 +4,7 @@ from pandas import DataFrame
 from seaborn import load_dataset
 from sklearn.datasets import load_iris
 from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import StandardScaler
 
 
 class MLWarmup:
@@ -52,7 +53,10 @@ class MLWarmup:
         print(planets_df4.isnull().sum())
         print(planets_df4)
         # skalowanie danych
-
+        std = StandardScaler()
+        planets_df4 = std.fit_transform(planets_df4)
+        planets_df4 = DataFrame(planets_df4, columns=list(planets_df.columns))
+        print(planets_df4)
 ml = MLWarmup()
 # ml.getIrisDataset()
 ml.getPlanetsDataset()
