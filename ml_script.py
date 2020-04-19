@@ -1,10 +1,11 @@
 import pandas as pd
+import seaborn
 from numpy import nan
 from pandas import DataFrame
 from seaborn import load_dataset
 from sklearn.datasets import load_iris
 from sklearn.impute import SimpleImputer
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.preprocessing import StandardScaler
@@ -73,7 +74,7 @@ class MLWarmup:
             print(self.X_train[index], self.y_train[index],sep=' | ')
             index += 1
     def trainModel(self):
-        self.knn3 = KNeighborsClassifier(n_neighbors=3)
+        self.knn3 = KNeighborsClassifier(n_neighbors=3, metric='chebyshev')
         self.knn5 = KNeighborsClassifier(n_neighbors=5)
         self.knn7 = KNeighborsClassifier(n_neighbors=7)
         # trenowanie
@@ -94,10 +95,18 @@ class MLWarmup:
         print("ACC(kNN3) test: " + str(accuracy_score(self.y_test, y_pred3)))
         print("ACC(kNN5) test: " + str(accuracy_score(self.y_test, y_pred5)))
         print("ACC(kNN7) test: " + str(accuracy_score(self.y_test, y_pred7)))
-
+        print(confusion_matrix(self.y_test, y_pred3))
+    def homework(self):
+        self.titanic = seaborn.load_dataset("titanic")
+        print(self.titanic)
+        # 1. Oczyszczenie danych i podział na zbiór testowy i treningowy ???
+        # 2. Trenowanie na podstawie kNN(???)
+        # 3. Testowanie
+        # 4. Ocena klasyfikacji i testowania
 ml = MLWarmup()
 ml.getIrisDataset()
 ml.splitDataset()
 ml.trainModel()
 ml.testModel()
+ml.homework()
 # ml.getPlanetsDataset()
