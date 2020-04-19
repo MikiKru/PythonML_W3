@@ -22,6 +22,10 @@ class MLWarmup:
             if(planets_df[c].isnull().sum() > half_dataset_no):
                 planets_df1 = planets_df1.drop(c,axis=1)
         print(planets_df1.isnull().sum())
+        # usuń wszystkie te wiesze kóre zawierają ponad połowę wartości pustych -> planets_df
+        planets_df2 = planets_df
+        planets_df2 = planets_df2.dropna(thresh=4)
+        print(planets_df2)
 
 
 
