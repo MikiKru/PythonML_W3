@@ -105,6 +105,7 @@ class MLWarmup:
         # 2. Trenowanie na podstawie kNN(???)
         # 3. Testowanie
         # 4. Ocena klasyfikacji i testowania
+
 ml = MLWarmup()
 ml.getIrisDataset()
 ml.splitDataset()
