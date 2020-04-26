@@ -18,8 +18,8 @@ class Classifiers:
         # print(X.describe(include={'boolean'}))
         X_train, X_test, y_train, y_test = train_test_split(X,y, train_size=train_split_percent)
         return X_train, X_test, y_train, y_test
-    def datasetPreprocessing(self, X, *columns_to_drop):
-        X_clean = X
+    def datasetPreprocessing(self, X, columns_to_drop):
+        X_clean = X.drop(columns_to_drop, axis=1)
         print(X_clean.info())
         # X_clean = get_dummies(X, columns=['embark_town', 'class', 'who', 'alone','sibsp', 'parch'], drop_first=True)
         # print(X_clean)
@@ -34,7 +34,7 @@ c = Classifiers()
 X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
     X=seaborn.load_dataset("titanic").iloc[:, 1:],
     y=seaborn.load_dataset("titanic")['survived'])
-c.datasetPreprocessing(X_train)
+c.datasetPreprocessing(X_train, ['sex','embarked','class','adult_male','deck','alive'])
 # y_pred_knn5 = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
 # print(y_pred_knn5)
 # y_pred_tree = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
