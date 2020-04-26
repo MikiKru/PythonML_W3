@@ -4,7 +4,7 @@ from numpy import nan
 from pandas import get_dummies
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score, confusion_matrix
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
@@ -52,6 +52,9 @@ class Classifiers:
         print("Nazwa klasyfikatora: " + clf_name)
         print(accuracy_score(y_test, y_pred))
         print(confusion_matrix(y_test, y_pred))
+    def crossValidation(self, clf, X, y, folds=5):
+        print(cross_val_score(clf, X, y, cv = folds))
+
 
 c = Classifiers()
 X_clean = c.datasetPreprocessing(
@@ -72,8 +75,8 @@ y_pred_tree_train = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X
 y_pred_tree_test = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
 y_pred_svm_lin_train = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_train,y_train)
 y_pred_svm_lin_test = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_test,y_train)
-y_pred_svm_rbf_train = c.trainAndTestClassifier(SVC(kernel='poly', degree=5, gamma='auto'), X_train,X_train,y_train)
-y_pred_svm_rbf_test = c.trainAndTestClassifier(SVC(kernel='poly', degree=5, gamma='auto'), X_train,X_test,y_train)
+y_pred_svm_rbf_train = c.trainAndTestClassifier(SVC(kernel='rbf', gamma='auto'), X_train,X_train,y_train)
+y_pred_svm_rbf_test = c.trainAndTestClassifier(SVC(kernel='rbf', gamma='auto'), X_train,X_test,y_train)
 
 c.getClassificationScore("kNN-5 trenowanie", y_train, y_pred_knn5_train)
 c.getClassificationScore("kNN-5 testowanie", y_test, y_pred_knn5_test)
