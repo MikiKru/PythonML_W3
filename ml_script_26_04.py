@@ -68,14 +68,17 @@ class Classifiers:
             y_preds.append(clf.predict(X_test))
         # głosowanie większościowe
         y_result = y_preds[0]
-        index = 0
         clf_index = 1
         while(clf_index < len(y_preds)):
+            index = 0
             while(index < len(y_result)):
                 y_result[index] = y_result[index] + y_preds[clf_index][index]
                 index += 1
             clf_index += 1
-        print(y_result)
+        # uśrednianie i zaokrąglanie
+        for index, y in enumerate(y_result):
+            y_result[index] = round(y_result[index]/len(clfs))
+        return y_result
 c = Classifiers()
 # X_clean = c.datasetPreprocessing(
 #     X = seaborn.load_dataset("titanic").iloc[:, 1:],
@@ -133,4 +136,4 @@ c.getClassificationScore("RF trenowanie", y_train, y_pred_svm_lin_train)
 c.getClassificationScore("RF testowanie", y_test, y_pred_svm_lin_test)
 
 # klasyfikacja zespołowa
-c.ensableClassifier([RandomForestClassifier(), SVC(), KNeighborsClassifier()], X_train, X_test, y_train)
+c.ensableClassifier([RandomForestClassifier(), RandomForestClassifier(), RandomForestClassifier()], X_train, X_test, y_train)
