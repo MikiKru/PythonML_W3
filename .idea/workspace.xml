@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ml_script_26_04.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
+            <state relative-caret-position="423">
+              <caret line="89" column="17" lean-forward="true" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -186,7 +186,7 @@
       <updated>1587287923078</updated>
       <workItem from="1587287937455" duration="17633000" />
       <workItem from="1587805760511" duration="1208000" />
-      <workItem from="1587845348457" duration="21657000" />
+      <workItem from="1587845348457" duration="22474000" />
     </task>
     <task id="LOCAL-00001" summary="homework">
       <created>1587307174810</created>
@@ -220,7 +220,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40498000" />
+    <option name="totallyTimeSpent" value="41315000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -243,7 +243,7 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.0" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.13929619" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.21407625" />
       <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" sideWeight="0.5008944" side_tool="true" visible="true" weight="0.043243244" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -313,8 +313,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ml_script_26_04.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="141" column="4" selection-start-line="141" selection-start-column="4" selection-end-line="141" selection-end-column="4" />
+        <state relative-caret-position="423">
+          <caret line="89" column="17" lean-forward="true" selection-start-line="89" selection-start-column="17" selection-end-line="89" selection-end-column="17" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

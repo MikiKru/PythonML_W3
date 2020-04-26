@@ -1,5 +1,6 @@
 import seaborn
 import pandas as pd
+from matplotlib import pyplot
 from numpy import nan
 from pandas import get_dummies
 from sklearn.ensemble import RandomForestClassifier
@@ -79,6 +80,13 @@ class Classifiers:
         for index, y in enumerate(y_result):
             y_result[index] = round(y_result[index]/len(clfs))
         return y_result
+    def plotClassificationResult(self, column1, x_label, column2, y_label, y_pred):
+        pyplot.scatter(column1, column2, c=y_pred)
+        pyplot.title("Klasyfikacja próbek")
+        pyplot.xlabel(x_label)
+        pyplot.ylabel(y_label)
+        pyplot.show()
+
 c = Classifiers()
 # X_clean = c.datasetPreprocessing(
 #     X = seaborn.load_dataset("titanic").iloc[:, 1:],
@@ -137,8 +145,15 @@ c.getClassificationScore("RF testowanie", y_test, y_pred_svm_lin_test)
 
 # klasyfikacja zespołowa
 y_pred_ensable_train = c.ensableClassifier(
-    [RandomForestClassifier(), SVC(), KNeighborsClassifier()], X_train, X_train, y_train)
+    [SVC(kernel='linear'), SVC(), KNeighborsClassifier()], X_train, X_train, y_train)
 y_pred_ensable_test = c.ensableClassifier(
-    [RandomForestClassifier(), SVC(), KNeighborsClassifier()], X_train, X_test, y_train)
-c.getClassificationScore("Uczenie zespołowe trenowanie", y_test, y_pred_ensable_train)
+    [SVC(kernel='linear'), SVC(), KNeighborsClassifier()], X_train, X_test, y_train)
+c.getClassificationScore("Uczenie zespołowe trenowanie", y_train, y_pred_ensable_train)
 c.getClassificationScore("Uczenie zespołowe testowanie", y_test, y_pred_ensable_test)
+
+
+
+
+
+
+
