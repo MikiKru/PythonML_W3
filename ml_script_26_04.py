@@ -54,7 +54,11 @@ class Classifiers:
         print(confusion_matrix(y_test, y_pred))
     def crossValidation(self, clf, clf_name, X, y, folds=5):
         print("cross-validation: " + clf_name)
-        print(cross_val_score(clf, X, y, cv = folds))
+        scores = cross_val_score(clf, X, y, cv = folds)
+        print(scores)
+        # wynik mean i stddev testów kroswalidacji
+        print("mean: " + str(scores.mean()))
+        print("stddev: " + str(scores.std()))
 
 c = Classifiers()
 X_clean = c.datasetPreprocessing(
@@ -88,4 +92,4 @@ c.getClassificationScore("SVM-rbf trenowanie", y_train, y_pred_svm_rbf_train)
 c.getClassificationScore("SVM-rbf testowanie", y_test, y_pred_svm_rbf_test)
 
 # cross-validation
-c.crossValidation(SVC(kernel='linear'), X_train, y_train, folds=7)
+c.crossValidation(SVC(kernel='linear'), 'SVM-lin', X_train, y_train, folds=7)
