@@ -52,9 +52,9 @@ class Classifiers:
         print("Nazwa klasyfikatora: " + clf_name)
         print(accuracy_score(y_test, y_pred))
         print(confusion_matrix(y_test, y_pred))
-    def crossValidation(self, clf, X, y, folds=5):
+    def crossValidation(self, clf, clf_name, X, y, folds=5):
+        print("cross-validation: " + clf_name)
         print(cross_val_score(clf, X, y, cv = folds))
-
 
 c = Classifiers()
 X_clean = c.datasetPreprocessing(
@@ -86,3 +86,6 @@ c.getClassificationScore("SVM-linear trenowanie", y_train, y_pred_svm_lin_train)
 c.getClassificationScore("SVM-linear testowanie", y_test, y_pred_svm_lin_test)
 c.getClassificationScore("SVM-rbf trenowanie", y_train, y_pred_svm_rbf_train)
 c.getClassificationScore("SVM-rbf testowanie", y_test, y_pred_svm_rbf_test)
+
+# cross-validation
+c.crossValidation(SVC(kernel='linear'), X_train, y_train, folds=7)
