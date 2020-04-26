@@ -150,7 +150,7 @@ y_pred_ensable_test = c.ensableClassifier(
     [SVC(kernel='linear'), SVC(), KNeighborsClassifier()], X_train, X_test, y_train)
 c.getClassificationScore("Uczenie zespołowe trenowanie", y_train, y_pred_ensable_train)
 c.getClassificationScore("Uczenie zespołowe testowanie", y_test, y_pred_ensable_test)
-
+c.plotClassificationResult(X_test['age'],'age', X_test['fare'], 'fare', y_pred_ensable_test)
 
 
 
