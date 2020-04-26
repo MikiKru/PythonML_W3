@@ -3,6 +3,7 @@ import pandas as pd
 from numpy import nan
 from pandas import get_dummies
 from sklearn.impute import SimpleImputer
+from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
@@ -45,6 +46,10 @@ class Classifiers:
         # testowanie
         y_pred = clf.predict(X_test)
         return y_pred
+    def getClassificationScore(self, clf_name ,y_test, y_pred):
+        print("Nazwa klasyfikatora: " + clf_name)
+        print(accuracy_score(y_test, y_pred))
+        print(confusion_matrix(y_test, y_pred))
 
 c = Classifiers()
 X_clean = c.datasetPreprocessing(
@@ -52,12 +57,16 @@ X_clean = c.datasetPreprocessing(
     columns_to_drop = ['sex','embarked','class','adult_male','deck','alive'],
     columns_to_map = ['who','embark_town', 'alone'],
     nan_to_median_columns = ['age'],
-    nan_to_most_freq_columns = ['embark_town']
+    nan_to_most_freq_columns = []
     )
 X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
     X=X_clean,
     y=seaborn.load_dataset("titanic")['survived'])
-y_pred_knn5 = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
-print(y_pred_knn5)
-y_pred_tree = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
-print(y_pred_tree)
+y_pred_knn5_train = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_train,y_train)
+y_pred_knn5_test = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
+y_pred_tree_train = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_train,y_train)
+y_pred_tree_test = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
+c.getClassificationScore("kNN-5 trenowanie", y_train, y_pred_knn5_train)
+c.getClassificationScore("kNN-5 testowanie", y_test, y_pred_knn5_test)
+c.getClassificationScore("DT trenowanie", y_train, y_pred_tree_train)
+c.getClassificationScore("DT testowanie", y_test, y_pred_tree_test)
