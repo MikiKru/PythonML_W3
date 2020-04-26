@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bf349be-526c-47e6-bbc1-f1e7b96a432f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ML_W3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ML_W3.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ml_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ml_script_26_04.py" beforeDir="false" afterPath="$PROJECT_DIR$/ml_script_26_04.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,7 +19,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ml_script.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
+            <state relative-caret-position="287">
               <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
@@ -33,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ml_script_26_04.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="111">
-              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+            <state relative-caret-position="223">
+              <caret line="16" column="95" selection-start-line="16" selection-start-column="95" selection-end-line="16" selection-end-column="95" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -189,7 +187,7 @@
       <updated>1587287923078</updated>
       <workItem from="1587287937455" duration="17633000" />
       <workItem from="1587805760511" duration="1208000" />
-      <workItem from="1587845348457" duration="4120000" />
+      <workItem from="1587845348457" duration="4753000" />
     </task>
     <task id="LOCAL-00001" summary="homework">
       <created>1587307174810</created>
@@ -198,17 +196,30 @@
       <option name="project" value="LOCAL" />
       <updated>1587307174810</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="ml 26.04.2020">
+      <created>1587889246733</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1587889246733</updated>
+    </task>
+    <task id="LOCAL-00003" summary="ml 26.04.2020">
+      <created>1587889256217</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1587889256217</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22961000" />
+    <option name="totallyTimeSpent" value="23594000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18783784" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18783784" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="DB Browser" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -225,7 +236,7 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32991204" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.3797654" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="13" visible="true" weight="0.0" />
       <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" sideWeight="0.5008944" side_tool="true" visible="true" weight="0.15202703" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -239,7 +250,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="homework" />
-    <option name="LAST_COMMIT_MESSAGE" value="homework" />
+    <MESSAGE value="ml 26.04.2020" />
+    <option name="LAST_COMMIT_MESSAGE" value="ml 26.04.2020" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/pandas/core/generic.py">
@@ -258,7 +270,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ml_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
+        <state relative-caret-position="287">
           <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
@@ -268,8 +280,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ml_script_26_04.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        <state relative-caret-position="223">
+          <caret line="16" column="95" selection-start-line="16" selection-start-column="95" selection-end-line="16" selection-end-column="95" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
