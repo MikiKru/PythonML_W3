@@ -103,7 +103,7 @@ X_clean = c.datasetPreprocessing(
     )
 # strojenie algorytmu
 clf = RandomForestClassifier()
-c.crossValidation(clf, 'SVM-lin', X_clean, seaborn.load_dataset("titanic")['survived'], folds=5)
+c.crossValidation(clf, 'RF', X_clean, seaborn.load_dataset("titanic")['survived'], folds=5)
 # podział na train i test
 X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
     X=X_clean,
@@ -114,5 +114,5 @@ X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
 y_pred_svm_lin_train = c.trainAndTestClassifier(clf, X_train,X_train,y_train)
 y_pred_svm_lin_test = c.trainAndTestClassifier(clf, X_train,X_test,y_train)
 # wyniki
-c.getClassificationScore("SVM-linear trenowanie", y_train, y_pred_svm_lin_train)
-c.getClassificationScore("SVM-linear testowanie", y_test, y_pred_svm_lin_test)
+c.getClassificationScore("RF trenowanie", y_train, y_pred_svm_lin_train)
+c.getClassificationScore("RF testowanie", y_test, y_pred_svm_lin_test)
