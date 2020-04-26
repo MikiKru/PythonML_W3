@@ -2,6 +2,7 @@ import seaborn
 import pandas as pd
 from numpy import nan
 from pandas import get_dummies
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split, cross_val_score
@@ -61,6 +62,38 @@ class Classifiers:
         print("stddev: " + str(scores.std()))
 
 c = Classifiers()
+# X_clean = c.datasetPreprocessing(
+#     X = seaborn.load_dataset("titanic").iloc[:, 1:],
+#     columns_to_drop = ['sex','embarked','class','adult_male','deck','alive'],
+#     columns_to_map = ['who','embark_town', 'alone'],
+#     nan_to_median_columns = ['age'],
+#     nan_to_most_freq_columns = []
+#     )
+# X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
+#     X=X_clean,
+#     y=seaborn.load_dataset("titanic")['survived'],
+#     train_split_percent = 0.6
+# )
+# y_pred_knn5_train = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_train,y_train)
+# y_pred_knn5_test = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
+# y_pred_tree_train = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_train,y_train)
+# y_pred_tree_test = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
+# y_pred_svm_lin_train = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_train,y_train)
+# y_pred_svm_lin_test = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_test,y_train)
+# y_pred_svm_rbf_train = c.trainAndTestClassifier(SVC(kernel='rbf', gamma='auto'), X_train,X_train,y_train)
+# y_pred_svm_rbf_test = c.trainAndTestClassifier(SVC(kernel='rbf', gamma='auto'), X_train,X_test,y_train)
+#
+# c.getClassificationScore("kNN-5 trenowanie", y_train, y_pred_knn5_train)
+# c.getClassificationScore("kNN-5 testowanie", y_test, y_pred_knn5_test)
+# c.getClassificationScore("DT trenowanie", y_train, y_pred_tree_train)
+# c.getClassificationScore("DT testowanie", y_test, y_pred_tree_test)
+# c.getClassificationScore("SVM-linear trenowanie", y_train, y_pred_svm_lin_train)
+# c.getClassificationScore("SVM-linear testowanie", y_test, y_pred_svm_lin_test)
+# c.getClassificationScore("SVM-rbf trenowanie", y_train, y_pred_svm_rbf_train)
+# c.getClassificationScore("SVM-rbf testowanie", y_test, y_pred_svm_rbf_test)
+
+# cross-validation
+# czyszczenie zbioru
 X_clean = c.datasetPreprocessing(
     X = seaborn.load_dataset("titanic").iloc[:, 1:],
     columns_to_drop = ['sex','embarked','class','adult_male','deck','alive'],
@@ -68,28 +101,18 @@ X_clean = c.datasetPreprocessing(
     nan_to_median_columns = ['age'],
     nan_to_most_freq_columns = []
     )
+# strojenie algorytmu
+clf = RandomForestClassifier()
+c.crossValidation(clf, 'SVM-lin', X_clean, seaborn.load_dataset("titanic")['survived'], folds=5)
+# podział na train i test
 X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
     X=X_clean,
     y=seaborn.load_dataset("titanic")['survived'],
     train_split_percent = 0.6
 )
-y_pred_knn5_train = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_train,y_train)
-y_pred_knn5_test = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
-y_pred_tree_train = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_train,y_train)
-y_pred_tree_test = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
-y_pred_svm_lin_train = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_train,y_train)
-y_pred_svm_lin_test = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_test,y_train)
-y_pred_svm_rbf_train = c.trainAndTestClassifier(SVC(kernel='rbf', gamma='auto'), X_train,X_train,y_train)
-y_pred_svm_rbf_test = c.trainAndTestClassifier(SVC(kernel='rbf', gamma='auto'), X_train,X_test,y_train)
-
-c.getClassificationScore("kNN-5 trenowanie", y_train, y_pred_knn5_train)
-c.getClassificationScore("kNN-5 testowanie", y_test, y_pred_knn5_test)
-c.getClassificationScore("DT trenowanie", y_train, y_pred_tree_train)
-c.getClassificationScore("DT testowanie", y_test, y_pred_tree_test)
+# trenowanie i testowanie
+y_pred_svm_lin_train = c.trainAndTestClassifier(clf, X_train,X_train,y_train)
+y_pred_svm_lin_test = c.trainAndTestClassifier(clf, X_train,X_test,y_train)
+# wyniki
 c.getClassificationScore("SVM-linear trenowanie", y_train, y_pred_svm_lin_train)
 c.getClassificationScore("SVM-linear testowanie", y_test, y_pred_svm_lin_test)
-c.getClassificationScore("SVM-rbf trenowanie", y_train, y_pred_svm_rbf_train)
-c.getClassificationScore("SVM-rbf testowanie", y_test, y_pred_svm_rbf_test)
-
-# cross-validation
-c.crossValidation(SVC(kernel='linear'), 'SVM-lin', X_train, y_train, folds=7)
