@@ -136,4 +136,9 @@ c.getClassificationScore("RF trenowanie", y_train, y_pred_svm_lin_train)
 c.getClassificationScore("RF testowanie", y_test, y_pred_svm_lin_test)
 
 # klasyfikacja zespołowa
-c.ensableClassifier([RandomForestClassifier(), RandomForestClassifier(), RandomForestClassifier()], X_train, X_test, y_train)
+y_pred_ensable_train = c.ensableClassifier(
+    [RandomForestClassifier(), SVC(), KNeighborsClassifier()], X_train, X_train, y_train)
+y_pred_ensable_test = c.ensableClassifier(
+    [RandomForestClassifier(), SVC(), KNeighborsClassifier()], X_train, X_test, y_train)
+c.getClassificationScore("Uczenie zespołowe trenowanie", y_test, y_pred_ensable_train)
+c.getClassificationScore("Uczenie zespołowe testowanie", y_test, y_pred_ensable_test)
