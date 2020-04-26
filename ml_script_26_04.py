@@ -6,6 +6,7 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
 
@@ -41,6 +42,7 @@ class Classifiers:
         #     X_clean[column_name] = impFreq.fit_transform(X_clean[column_name])
         return X_clean
     def trainAndTestClassifier(self, clf, X_train, X_test, y_train):
+        print(clf)
         # trenowanie
         clf.fit(X_train, y_train)
         # testowanie
@@ -61,12 +63,23 @@ X_clean = c.datasetPreprocessing(
     )
 X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
     X=X_clean,
-    y=seaborn.load_dataset("titanic")['survived'])
+    y=seaborn.load_dataset("titanic")['survived'],
+    train_split_percent = 0.6
+)
 y_pred_knn5_train = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_train,y_train)
 y_pred_knn5_test = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
 y_pred_tree_train = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_train,y_train)
 y_pred_tree_test = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
+y_pred_svm_lin_train = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_train,y_train)
+y_pred_svm_lin_test = c.trainAndTestClassifier(SVC(kernel='linear'), X_train,X_test,y_train)
+y_pred_svm_rbf_train = c.trainAndTestClassifier(SVC(kernel='poly', degree=5, gamma='auto'), X_train,X_train,y_train)
+y_pred_svm_rbf_test = c.trainAndTestClassifier(SVC(kernel='poly', degree=5, gamma='auto'), X_train,X_test,y_train)
+
 c.getClassificationScore("kNN-5 trenowanie", y_train, y_pred_knn5_train)
 c.getClassificationScore("kNN-5 testowanie", y_test, y_pred_knn5_test)
 c.getClassificationScore("DT trenowanie", y_train, y_pred_tree_train)
 c.getClassificationScore("DT testowanie", y_test, y_pred_tree_test)
+c.getClassificationScore("SVM-linear trenowanie", y_train, y_pred_svm_lin_train)
+c.getClassificationScore("SVM-linear testowanie", y_test, y_pred_svm_lin_test)
+c.getClassificationScore("SVM-rbf trenowanie", y_train, y_pred_svm_rbf_train)
+c.getClassificationScore("SVM-rbf testowanie", y_test, y_pred_svm_rbf_test)
