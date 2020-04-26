@@ -38,7 +38,7 @@ class Classifiers:
         # for column_name in nan_to_most_freq_columns:
         #     impFreq = SimpleImputer(missing_values=nan, strategy='most_frequent')
         #     X_clean[column_name] = impFreq.fit_transform(X_clean[column_name])
-        print(X_clean.isnull().sum())
+        return X_clean
     def trainAndTestClassifier(self, clf, X_train, X_test, y_train):
         # trenowanie
         clf.fit(X_train, y_train)
@@ -47,17 +47,17 @@ class Classifiers:
         return y_pred
 
 c = Classifiers()
-c.datasetPreprocessing(
+X_clean = c.datasetPreprocessing(
     X = seaborn.load_dataset("titanic").iloc[:, 1:],
     columns_to_drop = ['sex','embarked','class','adult_male','deck','alive'],
     columns_to_map = ['who','embark_town', 'alone'],
     nan_to_median_columns = ['age'],
     nan_to_most_freq_columns = ['embark_town']
     )
-# X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
-#     X=seaborn.load_dataset("titanic").iloc[:, 1:],
-#     y=seaborn.load_dataset("titanic")['survived'])
-# y_pred_knn5 = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
-# print(y_pred_knn5)
-# y_pred_tree = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
-# print(y_pred_tree)
+X_train, X_test, y_train, y_test = c.splitDatasetIntoTrainAndTest(
+    X=X_clean,
+    y=seaborn.load_dataset("titanic")['survived'])
+y_pred_knn5 = c.trainAndTestClassifier(KNeighborsClassifier(n_neighbors=5), X_train,X_test,y_train)
+print(y_pred_knn5)
+y_pred_tree = c.trainAndTestClassifier(DecisionTreeClassifier(), X_train,X_test,y_train)
+print(y_pred_tree)
