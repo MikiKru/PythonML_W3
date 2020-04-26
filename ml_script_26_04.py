@@ -60,7 +60,22 @@ class Classifiers:
         # wynik mean i stddev testów kroswalidacji
         print("mean: " + str(scores.mean()))
         print("stddev: " + str(scores.std()))
-
+    def ensableClassifier(self, clfs, X_train, X_test, y_train):
+        y_preds = []
+        # trenowanie i testowanie wszystkich klasyfikatorów z listy clfs
+        for clf in clfs:
+            clf.fit(X_train, y_train)
+            y_preds.append(clf.predict(X_test))
+        # głosowanie większościowe
+        y_result = y_preds[0]
+        index = 0
+        clf_index = 1
+        while(clf_index < len(y_preds)):
+            while(index < len(y_result)):
+                y_result[index] = y_result[index] + y_preds[clf_index][index]
+                index += 1
+            clf_index += 1
+        print(y_result)
 c = Classifiers()
 # X_clean = c.datasetPreprocessing(
 #     X = seaborn.load_dataset("titanic").iloc[:, 1:],
@@ -116,3 +131,6 @@ y_pred_svm_lin_test = c.trainAndTestClassifier(clf, X_train,X_test,y_train)
 # wyniki
 c.getClassificationScore("RF trenowanie", y_train, y_pred_svm_lin_train)
 c.getClassificationScore("RF testowanie", y_test, y_pred_svm_lin_test)
+
+# klasyfikacja zespołowa
+c.ensableClassifier([RandomForestClassifier(), SVC(), KNeighborsClassifier()], X_train, X_test, y_train)
