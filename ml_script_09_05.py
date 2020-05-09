@@ -52,15 +52,19 @@ class ClusteringAlgorithms:
     def getDBSCANN(self, clf):
         y_pred = clf.fit_predict(self.iris['data'])
         print(y_pred)
-    def plotRestults(self, cls_list, column1, column2):
-        y_preds = []
+    def plotRestults(self, cls_list, column1, column2, column3, column4):
         pyplot.figure()
-        pyplot.subplot(411)
+        pyplot.subplot(421)
         pyplot.scatter(self.iris['data'][:,column1], self.iris['data'][:,column2])
         pyplot.title("Init samples")
         pyplot.xlabel("x1")
         pyplot.ylabel("x2")
-        subplot_number = 412
+        pyplot.subplot(422)
+        pyplot.scatter(self.iris['data'][:,column3], self.iris['data'][:,column4])
+        pyplot.title("Init samples")
+        pyplot.xlabel("x1")
+        pyplot.ylabel("x2")
+        subplot_number = 423
         for cls_name in cls_list.keys():
             y_pred = cls_list[cls_name].fit_predict(self.iris['data'])
             pyplot.subplot(subplot_number)
@@ -68,6 +72,12 @@ class ClusteringAlgorithms:
             pyplot.title("Clustering: " + cls_name)
             pyplot.xlabel("x1")
             pyplot.ylabel("x2")
+            subplot_number += 1
+            pyplot.subplot(subplot_number)
+            pyplot.scatter(self.iris['data'][:, column3], self.iris['data'][:, column4], c=y_pred)
+            pyplot.title("Clustering: " + cls_name)
+            pyplot.xlabel("x3")
+            pyplot.ylabel("x4")
             subplot_number += 1
         pyplot.show()
 
@@ -82,7 +92,7 @@ c.plotRestults(
     {"KMeans++" : KMeans(n_clusters=3, init='k-means++'),
     "AgglomerativeClustering" : AgglomerativeClustering(n_clusters=3, linkage='single'),
     "DBSCAN" : DBSCAN()},
-    0,1
+    0,1,2,3
 )
 
 
