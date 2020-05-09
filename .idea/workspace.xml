@@ -43,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ml_script_09_05.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-763">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="275">
+              <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
               <folding>
                 <element signature="e#16#45#0" expanded="true" />
               </folding>
@@ -77,7 +77,7 @@
     <option name="x" value="-9" />
     <option name="y" value="-9" />
     <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="height" value="1098" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -224,7 +224,7 @@
       <workItem from="1587287937455" duration="17633000" />
       <workItem from="1587805760511" duration="1208000" />
       <workItem from="1587845348457" duration="23840000" />
-      <workItem from="1589006893685" duration="10109000" />
+      <workItem from="1589006893685" duration="12191000" />
     </task>
     <task id="LOCAL-00001" summary="homework">
       <created>1587307174810</created>
@@ -268,15 +268,28 @@
       <option name="project" value="LOCAL" />
       <updated>1589015686943</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="ml 09.05.2020">
+      <created>1589019674362</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1589019674362</updated>
+    </task>
+    <task id="LOCAL-00008" summary="ml 09.05.2020">
+      <created>1589020468488</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1589020468488</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52790000" />
+    <option name="totallyTimeSpent" value="54872000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.1527027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -295,13 +308,13 @@
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.0" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
-      <window_info anchor="bottom" id="Python Console" order="13" visible="true" weight="0.0" />
+      <window_info anchor="bottom" id="Python Console" order="13" visible="true" weight="0.31231672" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info active="true" anchor="right" id="SciView" order="3" sideWeight="0.7653959" visible="true" weight="0.32364866" />
+      <window_info active="true" anchor="right" id="SciView" order="3" sideWeight="0.7654584" visible="true" weight="0.23108108" />
       <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="5" sideWeight="0.2346041" side_tool="true" visible="true" weight="0.32364866" />
+      <window_info anchor="right" x="0" y="0" width="337" height="638" id="Documentation" order="5" sideWeight="0.23454158" side_tool="true" visible="true" weight="0.23108108" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" weight="0.1527027" />
@@ -376,8 +389,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ml_script_09_05.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-763">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="275">
+          <caret line="111" lean-forward="true" selection-start-line="111" selection-end-line="111" />
           <folding>
             <element signature="e#16#45#0" expanded="true" />
           </folding>

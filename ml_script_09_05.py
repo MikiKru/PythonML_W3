@@ -2,7 +2,7 @@
 from matplotlib import pyplot
 from sklearn.cluster import KMeans, AgglomerativeClustering, DBSCAN
 from sklearn.datasets import load_iris
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, silhouette_samples, silhouette_score
 
 
 class ClusteringAlgorithms:
@@ -52,6 +52,8 @@ class ClusteringAlgorithms:
     def getDBSCANN(self, clf):
         y_pred = clf.fit_predict(self.iris['data'])
         print(y_pred)
+        # print("Wewnątrzgrupowa suma kwadratów:" + clf.inertia_)
+
     def plotRestults(self, cls_list, column1, column2, column3, column4):
         pyplot.figure()
         pyplot.subplot(421)
@@ -95,5 +97,16 @@ c.plotRestults(
     0,1,2,3
 )
 
+clf = KMeans()
+y_pred = clf.fit_predict(load_iris()['data'])
+# print("Wewnątrzgrupowa suma kwadratów: ", clf.inertia_)
+# print(silhouette_samples(load_iris()['data'],y_pred))
+print("Upakowanie w KMeans", silhouette_score(load_iris()['data'],clf.labels_))
+clf = DBSCAN()
+y_pred = clf.fit_predict(load_iris()['data'])
+print("Upakowanie w DBSCANN", silhouette_score(load_iris()['data'],clf.labels_))
 
+clf = AgglomerativeClustering()
+clf.fit_predict(load_iris()['data'])
+print("Upakowanie w AC", silhouette_score(load_iris()['data'],clf.labels_))
 
